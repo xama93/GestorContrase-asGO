@@ -1,0 +1,13 @@
+
+HTTPS
+http://www.kaihag.com/https-and-go/
+
+Libro GO
+https://leanpub.com/gocrypto/read
+
+JSON
+https://kev.inburke.com/kevin/golang-json-http/
+
+
+GET
+https://play.golang.org/p/vl-e68vNX7

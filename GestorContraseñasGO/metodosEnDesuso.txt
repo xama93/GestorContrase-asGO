@@ -1,0 +1,125 @@
+//Checkea que el usuario existe y que puede iniciar sesion
+/*func checkInicioSesion(w io.Writer, user string, pass string) {
+
+	//Mirar en la DB si existe
+	// ...
+	for clave, usuario := range usuarios {
+		fmt.Println("key[%s] value[%s]\n", clave, usuario)
+		fmt.Println("USUARIO: " + usuario.user)
+		fmt.Println("USUARIO2: " + user)
+
+		if usuario.user == user {
+			response(w, true, "Hola 2323")
+			fmt.Println("USUARIO ENCOONTRADO")
+			//break
+		}
+
+	}
+
+	response(w, false, "Usuario o contraseña inválidos")
+
+}*/
+
+
+//const file = "mydb.gob"
+// Encode via Gob to file
+/*func Save(path string, object interface{}) error {
+	file, err := os.Create(path)
+	if err == nil {
+		encoder := gob.NewEncoder(file)
+		encoder.Encode(object)
+	}
+	file.Close()
+	return err
+}
+
+// Decode Gob file
+func Load(path string, object interface{}) error {
+	file, err := os.Open(path)
+
+	if err == nil {
+		decoder := gob.NewDecoder(file)
+		err = decoder.Decode(object)
+	}
+	file.Close()
+	return err
+}*/
+
+
+//Almacenar la DB en un fichero
+func guardarDB() {
+	SaveJsonFile(usuarios, "mydb.json")
+	//LoadJsonFile(usuarios, "mydb.json")
+	//fmt.Println("LALALAND1: ")
+	//fmt.Println(usuarios)
+
+	//err := Save(file, usuarios)
+	//chk(err)
+
+	/*str, err := json.Marshal(usuarios)
+	if err != nil {
+		fmt.Println("Error encoding JSON")
+		return
+	}
+
+	fmt.Println(string(str))*/
+
+	/*jsonString, err := json.Marshal(usuarios)
+	chk(err)
+
+	fmt.Println(usuarios)
+	fmt.Println(jsonString)
+
+	fout, err := os.Create("mydb.txt") // abrimos el segundo fichero (salida)
+	if err != nil {
+		panic(err)
+	}
+	defer fout.Close()
+
+	jsonInString := base64.StdEncoding.EncodeToString(jsonString)
+
+	fmt.Fprintf(fout, jsonInString)*/
+
+}
+
+func LoadJsonFile(v interface{}, path string) {
+
+	desencriptafichero()
+	file, e := ioutil.ReadFile(path)
+	if e != nil {
+		fmt.Printf("File error: %v\n", e)
+		os.Exit(1)
+	}
+	fmt.Printf("%s\n", string(file))
+
+	//m := new(Dispatch)
+	//var m interface{}
+	//var jsontype jsonobject
+	json.Unmarshal(file, &usuarios)
+	fmt.Printf("Results: %v\n", usuarios)
+
+	/*fin, err := os.Open(path) // abrimos el primer fichero (entrada)
+	if err != nil {
+		panic(err)
+	}
+	defer fin.Close()
+
+	fmt.Println("FIN: ")
+	fmt.Println(fin)
+	//var y map[string]interface{}
+	e := json.NewDecoder(fin)
+	fmt.Println("E: ")
+	fmt.Println(e)
+	if err := e.Decode(&v); err != nil {
+		panic(err)
+	}*/
+}
+
+/*func convert(b []byte) string {
+	s := make([]string, len(b))
+	for i := range b {
+		//s[i] = strconv.Itoa(int(b[i]))
+		s[i] = string(b[i])
+	}
+	return strings.Join(s, ",")
+}*/

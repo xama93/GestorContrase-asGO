@@ -1,0 +1,27 @@
+AMPLIACIÓN
+
+hash con salt en el servidor, para la contraseña de login.
+Generador de pw aleatorias, según unos parámetros.(al menos 8 caracteres,con minus y mayus,con numeros,caracteres alfanumericos &, $, y >)
+
+AMPLIACION ACABADA
+Doble tocken de autenticación, enviar un código por otro canal de comunicacíon, y esperar a que lo introduzca.(enviar un pin al correo para que el user lo meta con el login)
+
+TRABAJO REALIZADO
+
+1 struct de usuarios
+1 struct de contraseñas
+1 struct para cookies
+
+1 contraseña maestra resumida sha256 (var mainPass string = "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=") que se utiliza para descifrar la DB. esta clave se comprueba con una introducida por el administrador al arrancar el servidor.
+El fichero se encripta con el método Cipher feedback (CFB) de AES 256. La clave de cifrado es una sha256
+
+Generamos un []byte de bytes aleatorios, se pasa a base64 y despues se saca un sha256, se pasa a b64 y se almacena. (Se utiliza como clave para cifrar las PW de los usuarios)
+Las PW se cifran con un cifrador en flujo: modo CTR
+
+Gestion de cookies para los usuarios con un timer que caduca la sesion.
+
+CRUD de las contraseñas. Parte de cliente terminada.
+
+correo del servidor
+sdsservidor@gmail.com
+sds12345
